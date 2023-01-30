@@ -1,0 +1,322 @@
+@font-face {
+  font-family: Lilita;
+  src: url(fonts/LilitaOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url(fonts/Inter-Regular.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url(fonts/Inter-ExtraLight.ttf) format("truetype");
+  font-weight: 200;
+}
+
+/* Definitely should have tried SCSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+  font-family: Inter;
+  background-color: #dadada;
+}
+
+/* Navbar */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 3rem;
+  background-color: #fff;
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  left: 0;
+  bottom: -5px;
+  transition: width 0.2s ease-out;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.logo {
+  width: 40px;
+  cursor: pointer;
+}
+
+/* EOF Navbar */
+
+/* Core style */
+main {
+  margin: 0 auto;
+  max-width: 80%;
+  height: calc(
+    100vh - 40px - 1rem
+  ); /* (100vh - header.logoHeight - 2 * header.verticalPadding) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-side,
+.grandma-side {
+  width: 50%;
+}
+
+.title-container,
+.error-description {
+  margin-bottom: 2rem;
+}
+
+.title-container span {
+  font-style: oblique;
+  font-weight: 200;
+  font-size: 1.25rem;
+}
+
+.title-container h1 {
+  font-family: Lilita;
+  font-weight: 100;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+.error-description .not-found {
+  font-size: 2rem;
+  line-height: 2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.error-description .tip {
+  font-style: oblique;
+  font-weight: 200;
+}
+
+.home-button {
+  padding: 0.5rem 1rem;
+  position: relative;
+  outline: none;
+  background-color: transparent;
+  border: 1px solid #000;
+  border-radius: 3px;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.home-button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.grandma-container {
+  /* Fixed value, if changed, need to change eyes position and mouth */
+  width: 200px;
+  position: relative;
+  margin: auto;
+  animation: grandma-jump 0.3s infinite;
+}
+
+@keyframes grandma-jump {
+  0% {
+    top: 0px;
+  }
+
+  50% {
+    top: -2px;
+  }
+
+  100% {
+    top: 0px;
+  }
+}
+
+#grandma {
+  width: 100%;
+  height: auto;
+  background: transparent;
+}
+
+/* Positionating grandma's eyes and mouth */
+.eye {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  top: 56px;
+}
+
+.eye:nth-child(1) {
+  left: 75px;
+}
+
+.eye:nth-child(2) {
+  left: 100px;
+}
+
+.pupil {
+  background-color: black;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(50%, 50%);
+}
+
+.mouth {
+  position: absolute;
+  background-color: #d46057;
+  width: 20px;
+  height: 10px;
+  left: 85px;
+  top: 76px;
+  border-radius: 12px 12px 2px 2px;
+  transform: rotate(-1deg);
+  transition: all 0.2s ease-out;
+}
+
+.smile {
+  transform: rotate(4deg);
+  border-radius: 2px 2px 12px 12px;
+}
+
+.cat-container {
+  width: 50px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 5;
+  transition: all 0.3s ease;
+}
+
+/* Circle background for the cat */
+.cat-container::after {
+  content: "";
+  position: absolute;
+  background-color: #fce79c;
+  width: 70px;
+  height: 70px;
+  left: -10px;
+  top: -15px;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+#cat {
+  width: 100%;
+  height: auto;
+}
+
+.cat-container:hover {
+  cursor: pointer;
+  bottom: 5px;
+  left: 5px;
+}
+
+/* Responsive */
+.hamburger {
+  display: none;
+}
+
+@media screen and (max-width: 990px) {
+  .text-side {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .text-side,
+  .grandma-side {
+    width: 100%;
+    height: 50%;
+  }
+
+  main {
+    flex-wrap: wrap-reverse;
+  }
+
+  .text-side {
+    text-align: center;
+  }
+
+  .grandma-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  /* Just hided the links, hamburger not clickable at all */
+  header nav a {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 4px;
+    background-color: #000;
+  }
+
+  .hamburger span::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    top: -10px;
+  }
+
+  .hamburger span::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    bottom: -10px;
+  }
+}
