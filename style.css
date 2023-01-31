@@ -165,6 +165,10 @@ main {
   }
 }
 
+.grandma-container:has(.smile) {
+  animation: none;
+}
+
 #grandma {
   width: 100%;
   height: auto;
