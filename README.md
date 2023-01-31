@@ -6,6 +6,8 @@ the challenge was to create a 404 error page
 
 in VSCode, launch `index.html` file with _Live Server_ extension
 
+page is avalaible on https://jofresh.github.io/404/
+
 # features
 
 - eyes animation on mouse move
@@ -16,5 +18,5 @@ in VSCode, launch `index.html` file with _Live Server_ extension
 
 # misc
 
-- [Refacto, todos, comments...](refacto.md)
+- [Retrospective, comments](refacto.md)
 - [Resources](resources.md)
